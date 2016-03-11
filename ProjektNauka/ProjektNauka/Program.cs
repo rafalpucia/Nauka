@@ -8,8 +8,15 @@ namespace ProjektNauka
 {
     class Program
     {
+
         static void Main(string[] args)
         {
+            bool runGame = true;
+            //Nieskończona pętla w której wykonywać będzie się gra.
+            while (runGame)
+            {
+
+            }
         }
     }
 }
