@@ -26,5 +26,11 @@ namespace Nauka.Controllers
 
             return View();
         }
+        public ActionResult Wololo()
+        {
+            ViewBag.Message = "Nowy przycisk na miarę moich możliwości";
+
+            return View();
+        }
     }
 }
