@@ -81,6 +81,24 @@ namespace Nauka.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class RegisterUserViewModel
+    {
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Imie")]
+        public string Imie { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Nazwisko")]
+        public string Nazwisko { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Adres")]
+        public string Adres { get; set; }
+    }
+
     public class ResetPasswordViewModel
     {
         [Required]
