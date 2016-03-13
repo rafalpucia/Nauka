@@ -38,12 +38,26 @@ namespace Nauka.Controllers
 
         //POST: Jeśli chcemy wywołać metodę POST to dodajemy przed akcją dopisek specjalny.
         [HttpPost]
-        public ActionResult Wololo(RegisterUserViewModel model) //Dodatkowo jako parametr przyjmuje ten model który utworzyłeć specjalnie dla tej akcji w pliku AccountViewModels.cs
+        public ActionResult Wololo(NewItem model) //Dodatkowo jako parametr przyjmuje ten model który utworzyłeć specjalnie dla tej akcji w pliku AccountViewModels.cs
         {
-            //Tutaj trzeba utworzyć nowy obiekt jakiegoś typu, przypisać do niego wartości z modelu pobranego przez parametr
-            //I można go zapisać do bazy danych
-            //Ta metoda POST wywoływana jest wtedy jak coś wysyłamy na serwer z przeglądarki.
-            //Najczęściej po kliknięciu submit, register czy coś takiego
+            using (var ctx = new DataContext())
+            {
+                if (ModelState.IsValid)
+                {
+                    //tworzę nowy obiekt który zostanie dopisany do bazy
+                    var item = new NewItem();
+                    //P.S. ta linijka to to samo co  "NewItem item = new NewItem();" z  C++. Tutaj nie musimy za każdym razem podawać typu (ale możemy). Kompilator sam sie domyśli.
+
+                    item.Imie = model.Imie;
+                    item.Nazwisko = model.Nazwisko;
+                    //id wygeneruje się automatycznie, bo jest kluczem głównym
+
+
+                    //te dwie linijki dodają obiekt do bazy. Nic więcej nie trzeba robić.
+                    ctx.NewItems.Add(item);
+                    ctx.SaveChanges();
+                }
+            }
             return View(model);
         }
     }

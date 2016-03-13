@@ -7,13 +7,13 @@ namespace Nauka.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Pierwsza : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Pierwsza));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201603121707201_Pierwsza"; }
+            get { return "201603131322339_Initial"; }
         }
         
         string IMigrationMetadata.Source

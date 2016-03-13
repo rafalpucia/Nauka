@@ -84,7 +84,6 @@ namespace Nauka.Models
     public class RegisterUserViewModel
     {
         [Required]
-        [EmailAddress]
         [Display(Name = "Imie")]
         public string Imie { get; set; }
 
@@ -94,7 +93,6 @@ namespace Nauka.Models
         [Display(Name = "Nazwisko")]
         public string Nazwisko { get; set; }
 
-        [DataType(DataType.Password)]
         [Display(Name = "Adres")]
         public string Adres { get; set; }
     }

@@ -1,13 +1,13 @@
-﻿@model Nauka.Models.RegisterUserViewModel
+﻿@model Nauka.Models.NewItem
 @{
     ViewBag.Title = "Wololo";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
 <p>Wprowadź nowy rekord: *test*</p>
-
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        @*Tutaj jest po kolei: Akcja, Kontroler*@
+                        @*Utworzyłeś akcję Wololo w kontrolerze Home dlatego zmieniam na poprawne*@
+@using (Html.BeginForm("Wololo", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <h4>Nowy wpis do bazy danych</h4>
@@ -22,13 +22,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Nazwisko, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.Nazwisko, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Adres, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Adres, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.Nazwisko, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
