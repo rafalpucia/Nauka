@@ -14,6 +14,7 @@ namespace Nauka.Models
         //EF sam utworzy tabelę dla nich w bazie i doda to niej takie kolumny jakie ma pola
         //            VVVV    wystarczy tutaj dać wskaźnik i wcisnąć F12 to przejdzie do tej klasy (NewItem)
         public DbSet<NewItem> NewItems { get; set; }
+        public DbSet<WycieczkaViewModel> NewItemsa { get; set; }
 
         public DataContext() : base ("DefaultConnection")
         {

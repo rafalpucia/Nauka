@@ -36,6 +36,13 @@ namespace Nauka.Controllers
             return View();
         }
 
+        public ActionResult Wycieczka()
+        {
+            ViewBag.Message = "Formularz wycieczki";
+
+            return View();
+        }
+
         //POST: Jeśli chcemy wywołać metodę POST to dodajemy przed akcją dopisek specjalny.
         [HttpPost]
         public ActionResult Wololo(NewItem model) //Dodatkowo jako parametr przyjmuje ten model który utworzyłeć specjalnie dla tej akcji w pliku AccountViewModels.cs
@@ -60,5 +67,38 @@ namespace Nauka.Controllers
             }
             return View(model);
         }
+
+
+        [HttpPost]
+        public ActionResult Wycieczka(WycieczkaViewModel model) //Dodatkowo jako parametr przyjmuje ten model który utworzyłeć specjalnie dla tej akcji w pliku AccountViewModels.cs
+        {
+            using (var ctx = new DataContext())
+            {
+                if (ModelState.IsValid)
+                {
+                    //tworzę nowy obiekt który zostanie dopisany do bazy
+                    var item = new WycieczkaViewModel();
+                    //P.S. ta linijka to to samo co  "NewItem item = new NewItem();" z  C++. Tutaj nie musimy za każdym razem podawać typu (ale możemy). Kompilator sam sie domyśli.
+
+                    item.Nazwa = model.Nazwa;
+                    item.Max_miejsc = model.Max_miejsc;
+                    item.Czas_trwania = model.Czas_trwania;
+                    item.Rodzaj = model.Rodzaj;
+                    item.termin_wyjazdu = model.termin_wyjazdu;
+                    item.cena = model.cena;
+                    item.godzina_wyjazdu = model.godzina_wyjazdu;
+                    item.promocja = model.promocja;
+
+                    //id wygeneruje się automatycznie, bo jest kluczem głównym
+
+
+                    //te dwie linijki dodają obiekt do bazy. Nic więcej nie trzeba robić.
+                    ctx.NewItemsa.Add(item);
+                    ctx.SaveChanges();
+                }
+            }
+            return View(model);
+        }
+
     }
 }
