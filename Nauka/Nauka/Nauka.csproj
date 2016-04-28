@@ -182,6 +182,7 @@
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\TripModels.cs" />
     <Compile Include="Models\WycieczkaNowaModels.cs" />
     <Compile Include="Models\NewItemModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -99,6 +99,30 @@ namespace Nauka.Controllers
             }
             return View(model);
         }
+        //POST: Jeśli chcemy wywołać metodę POST to dodajemy przed akcją dopisek specjalny.
+        [HttpPost]
+        public ActionResult TripDB(Trip model) //Dodatkowo jako parametr przyjmuje ten model który utworzyłeć specjalnie dla tej akcji w pliku AccountViewModels.cs
+        {
+            using (var ctx = new DataContext())
+            {
+                if (ModelState.IsValid)
+                {
+                    //tworzę nowy obiekt który zostanie dopisany do bazy
+                    var item = new Trip();
+                    //P.S. ta linijka to to samo co  "NewItem item = new NewItem();" z  C++. Tutaj nie musimy za każdym razem podawać typu (ale możemy). Kompilator sam sie domyśli.
+
+                    item.Nazwa = model.Nazwa;
+                    item.Opis = model.Opis;
+                    //id wygeneruje się automatycznie, bo jest kluczem głównym
+
+
+                    //te dwie linijki dodają obiekt do bazy. Nic więcej nie trzeba robić.
+                    ctx.Trips.Add(item);
+                    ctx.SaveChanges();
+                }
+            }
+            return View(model);
+        }
 
     }
 }

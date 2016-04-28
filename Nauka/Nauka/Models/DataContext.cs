@@ -15,6 +15,7 @@ namespace Nauka.Models
         //            VVVV    wystarczy tutaj dać wskaźnik i wcisnąć F12 to przejdzie do tej klasy (NewItem)
         public DbSet<NewItem> NewItems { get; set; }
         public DbSet<WycieczkaViewModel> NewItemsa { get; set; }
+        public DbSet<Trip> Trips { get; set; }
 
         public DataContext() : base ("DefaultConnection")
         {
