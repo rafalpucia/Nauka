@@ -12,7 +12,8 @@ namespace Nauka.Models
         public int WycieczkaId { get; set; }
 
         [Required]
-        [Display(Name = "Nazwa")]
+        [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*")]
+        [Display(Name = "email")]
         public string Nazwa { get; set; }
 
         [Required]
@@ -28,8 +29,9 @@ namespace Nauka.Models
         public bool Rodzaj { get; set; }
 
         [Required]
+        [DataType(DataType.DateTime)]
         [Display(Name = "Termin wyjazdu")]
-        public string termin_wyjazdu { get; set; }
+        public System.DateTime termin_wyjazdu { get; set; }
 
         [Required]
         [Display(Name = "Cena")]
